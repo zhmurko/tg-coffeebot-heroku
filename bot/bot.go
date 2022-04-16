@@ -4,7 +4,7 @@ import (
   "github.com/gin-gonic/gin"
 )
 
-func Default(c *gin.Context) {
+func Pong(c *gin.Context) {
   c.JSON(http.StatusOK, gin.H{
     "message": "pong",
   })  

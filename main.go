@@ -18,7 +18,7 @@ func main() {
     
     router := gin.New()
     router.Use(gin.Logger())
-    router.GET("/ping", bot.Default)
+    router.GET("/ping", bot.Pong)
     
     router.Run(":" + port)
 }

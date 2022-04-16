@@ -12,3 +12,6 @@ clean:
 heroku: $(DOCKER_CMD)
 	heroku container:push web
 	heroku container:release web
+
+push:
+	git push heroku master
