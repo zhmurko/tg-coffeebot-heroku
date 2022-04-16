@@ -1,17 +1,29 @@
 package bot
 
 import (
-//	"encoding/json"
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	//"io/ioutil"
 	"log"
 	"net/http"
 	//"net/url"
 	//"os"
+  "bytes"
 )
 
+func prettyprint(b []byte) ([]byte, error) {
+    var out bytes.Buffer
+    err := json.Indent(&out, b, "", "  ")
+    return out.Bytes(), err
+}
+
 func Respond(c *gin.Context) {
-  log.Printf("Respond")
+  jsonData, err := c.GetRawData()
+  if err != nil{
+     log.Fatalln(err)
+  }
+  b, _ := prettyprint(jsonData)
+  log.Printf("Respond %s", b)  
 }
 
 func Pong(c *gin.Context) {
