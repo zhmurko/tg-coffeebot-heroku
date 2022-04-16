@@ -23,7 +23,7 @@ func Respond(c *gin.Context) {
      log.Fatalln(err)
   }
   b, _ := prettyprint(jsonData)
-  log.Printf("Respond %s", b)  
+  log.Println("Respond " + string(b))
 }
 
 func Pong(c *gin.Context) {
