@@ -11,7 +11,14 @@ import (
 
 func main() {
     port := os.Getenv("PORT")
-    
+
+    token, ok := os.LookupEnv("BOT_TOKEN")
+    if !ok {
+        token = "empty"
+    }    
+
+    telegramUrl := "https://api.telegram.org/bot" + token;
+    _ = telegramUrl
     if port == "" {
             log.Fatal("$PORT must be set")
     }
