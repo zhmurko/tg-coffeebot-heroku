@@ -17,13 +17,17 @@ func prettyprint(b []byte) ([]byte, error) {
     return out.Bytes(), err
 }
 
-func Respond(c *gin.Context) {
+func dumpPost(c *gin.Context) {
   jsonData, err := c.GetRawData()
   if err != nil{
      log.Fatalln(err)
   }
   b, _ := prettyprint(jsonData)
-  log.Println("Respond " + string(b))
+  log.Println("Respond " + string(b))  
+}
+
+func Respond(c *gin.Context) {
+  dumpPost(c)
 }
 
 func Pong(c *gin.Context) {
