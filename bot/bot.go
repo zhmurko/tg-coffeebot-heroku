@@ -23,7 +23,7 @@ func RegisterWebhook() {
 	}
 
 	telegramUrl := "https://api.telegram.org/bot" + token
-	herokuUrl := "https://" + appName + ".herokuapp.com/"
+	herokuUrl := "https://" + appName + ".herokuapp.com/webhook"
 
 	allowed_updates, _ := json.Marshal([]string{"message", "edited_channel_post", "callback_query", "chat_member"})
 
@@ -42,6 +42,10 @@ func RegisterWebhook() {
 	sb := string(body)
 	log.Printf(sb)
 	//
+}
+
+func Respond(c *gin.Context) {
+  log.Printf("Respond")
 }
 
 func Pong(c *gin.Context) {
