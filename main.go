@@ -22,7 +22,7 @@ func main() {
 	router := gin.New()
 	router.Use(gin.Logger())
   router.GET("/ping", bot.Pong)
-  router.GET("/webhook", bot.Respond)
+  router.POST("/webhook", bot.Respond)
 
 	doOnce.Do(func() {
 		bot.RegisterWebhook()
