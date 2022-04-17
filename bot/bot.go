@@ -8,9 +8,9 @@ import (
 )
 
 func Respond(c *gin.Context) {
-	//dumpPost(c)
 	var chat Update
 	err := c.ShouldBindJSON(&chat)
+	dumpPost(c)
 	if err != nil {
 		log.Println(err)
 	}
