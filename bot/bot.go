@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	//    "encoding/json"
-	"log"
+//	"log"
 )
 
 func Respond(c *gin.Context) {
