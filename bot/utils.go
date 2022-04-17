@@ -31,8 +31,8 @@ func Reply(b []byte) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
-func SendText(id string, text string) {
-	data := []byte(`{"chat_id": ` + id + `,"text":"` + text + `"}`)
+func SendText(id int, text string) {
+	data := []byte(`{"chat_id": ` + string(id) + `,"text":"` + text + `"}`)
 	_, _ = Reply(data)
 }
 

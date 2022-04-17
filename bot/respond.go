@@ -5,7 +5,7 @@ import (
 )
 
 type From struct {
-	Id           string `json:"id"`
+	Id           int    `json:"id"`
 	IsBot        string `json:"is_bot"`
 	FirstName    string `json:"first_name"`
 	Username     string `json:"username"`
@@ -13,22 +13,22 @@ type From struct {
 }
 
 type Chat struct {
-	Id        string `json:"id"`
+	Id        int    `json:"id"`
 	FirstName string `json:"first_name"`
 	Username  string `json:"username"`
 	Type      string `json:"type"`
 }
 
 type Message struct {
-	Id   string `json:"message_id"`
+	Id   int    `json:"message_id"`
 	From From   `json:"from"`
 	Chat Chat   `json:"chat"`
-	Date string `json:"date"`
+	Date int    `json:"date"`
 	Text string `json:"text"`
 }
 
 type Update struct {
-	UpdateId string  `json:"update_id"`
+	UpdateId int     `json:"update_id"`
 	Message  Message `json:"message"`
 }
 
