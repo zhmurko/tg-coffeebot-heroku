@@ -7,6 +7,8 @@ import (
 
 func Respond(c *gin.Context) {
 	dumpPost(c)
+	jsonData, _ := c.GetRawData()
+	_ = jsonData
 }
 
 func Pong(c *gin.Context) {

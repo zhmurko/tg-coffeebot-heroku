@@ -3,6 +3,7 @@ package bot
 import (
 	"encoding/json"
 	"testing"
+	//    "log"
 )
 
 var OriginJson = `{
@@ -40,5 +41,14 @@ func TestMenu(t *testing.T) {
 	got, _ := json.MarshalIndent(OriginMenu, "", "    ")
 	if want != string(got) {
 		t.Errorf("want = %s; got %s", want, got)
+	}
+}
+
+func TestJsonMenu(t *testing.T) {
+	menu := Menu{ChatId: "1", ReplyMarkup: Markup{InlineKeyboard: [][]Button{}}}
+	want := `{"chat_id":"1","text":"","reply_markup":{"inline_keyboard":[]}}`
+	got, _ := jsonMenu(menu)
+	if want != string(got) {
+		t.Errorf("Error:\nwant = %s;\n got = %s", want, got)
 	}
 }

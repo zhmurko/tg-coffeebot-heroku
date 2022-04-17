@@ -1,9 +1,9 @@
 package bot
 
 import (
-//    "encoding/json"
-//    "testing"
-//    "log"
+	"encoding/json"
+	//    "testing"
+	"log"
 )
 
 type Button struct {
@@ -31,15 +31,27 @@ var Latte = Button{
 	CallbackData: "order:Latte",
 }
 
-var CoffeeMenu = Menu{
-	ChatId: "1",
-	Text:   "select",
-	ReplyMarkup: Markup{
-		InlineKeyboard: [][]Button{
-			{
-				Espresso,
-				Latte,
+func jsonMenu(menu Menu) ([]byte, error) {
+	return json.Marshal(menu)
+}
+
+func ReplyMenu(id string) []byte {
+	var CoffeeMenu = Menu{
+		ChatId: id,
+		Text:   "Select:",
+		ReplyMarkup: Markup{
+			InlineKeyboard: [][]Button{
+				{
+					Espresso,
+					Latte,
+				},
 			},
 		},
-	},
+	}
+	menu, _ := jsonMenu(CoffeeMenu)
+	body, err := Reply(menu)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return body
 }
