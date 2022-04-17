@@ -16,7 +16,7 @@ type Markup struct {
 }
 
 type Menu struct {
-	ChatId      string `json:"chat_id"`
+	ChatId      int    `json:"chat_id"`
 	Text        string `json:"text"`
 	ReplyMarkup Markup `json:"reply_markup"`
 }
@@ -35,7 +35,7 @@ func jsonMenu(menu Menu) ([]byte, error) {
 	return json.Marshal(menu)
 }
 
-func ReplyMenu(id string) []byte {
+func ReplyMenu(id int) []byte {
 	var CoffeeMenu = Menu{
 		ChatId: id,
 		Text:   "Select:",

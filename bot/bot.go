@@ -15,7 +15,7 @@ func Respond(c *gin.Context) {
 		log.Println(err)
 	}
 	id := chat.Message.Chat.Id
-	log.Printf("ID: %s", id)
+	log.Printf("ID: %d", id)
 	if chat.Message.Text == "/menu" {
 		ReplyMenu(id)
 	} else {

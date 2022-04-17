@@ -7,7 +7,7 @@ import (
 )
 
 var OriginJson = `{
-    "chat_id": "1",
+    "chat_id": 1,
     "text": "Select",
     "reply_markup": {
         "inline_keyboard": [
@@ -26,7 +26,7 @@ var OriginJson = `{
 }`
 
 var OriginMenu = Menu{
-	ChatId: "1",
+	ChatId: 1,
 	Text:   "Select",
 	ReplyMarkup: Markup{
 		InlineKeyboard: [][]Button{{
@@ -45,8 +45,8 @@ func TestMenu(t *testing.T) {
 }
 
 func TestJsonMenu(t *testing.T) {
-	menu := Menu{ChatId: "1", ReplyMarkup: Markup{InlineKeyboard: [][]Button{}}}
-	want := `{"chat_id":"1","text":"","reply_markup":{"inline_keyboard":[]}}`
+	menu := Menu{ChatId: 1, ReplyMarkup: Markup{InlineKeyboard: [][]Button{}}}
+	want := `{"chat_id":1,"text":"","reply_markup":{"inline_keyboard":[]}}`
 	got, _ := jsonMenu(menu)
 	if want != string(got) {
 		t.Errorf("Error:\nwant = %s;\n got = %s", want, got)

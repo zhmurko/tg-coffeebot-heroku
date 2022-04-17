@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+    "fmt"
 )
 
 func Reply(b []byte) ([]byte, error) {
@@ -32,7 +33,7 @@ func Reply(b []byte) ([]byte, error) {
 }
 
 func SendText(id int, text string) {
-	data := []byte(`{"chat_id": ` + string(id) + `,"text":"` + text + `"}`)
+	data := []byte(fmt.Sprintf(`{"chat_id":%d,"text":"%s"}`, id, text))
 	_, _ = Reply(data)
 }
 
