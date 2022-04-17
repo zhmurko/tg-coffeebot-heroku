@@ -3,12 +3,24 @@ package bot
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	//    "encoding/json"
+	"log"
 )
 
 func Respond(c *gin.Context) {
-	dumpPost(c)
-	jsonData, _ := c.GetRawData()
-	_ = jsonData
+	//dumpPost(c)
+	var chat Update
+	err := c.ShouldBindJSON(&chat)
+	if err != nil {
+		log.Println(err)
+	}
+	id := chat.Message.Chat.Id
+	log.Printf("ID: %s", id)
+	if chat.Message.Text == "/menu" {
+		ReplyMenu(id)
+	} else {
+		SendText(id, `type "/menu"`)
+	}
 }
 
 func Pong(c *gin.Context) {

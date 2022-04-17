@@ -11,7 +11,7 @@ import (
 
 var doOnce sync.Once
 
-var AdminId  = "234140659"
+var AdminId = "234140659"
 
 func main() {
 	port := os.Getenv("PORT")

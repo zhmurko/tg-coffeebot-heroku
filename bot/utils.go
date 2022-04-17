@@ -31,6 +31,11 @@ func Reply(b []byte) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
+func SendText(id string, text string) {
+	data := []byte(`{"chat_id": ` + id + `,"text":"` + text + `"}`)
+	_, _ = Reply(data)
+}
+
 func prettyprint(b []byte) ([]byte, error) {
 	var out bytes.Buffer
 	err := json.Indent(&out, b, "|", "  ")
