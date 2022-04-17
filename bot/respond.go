@@ -6,7 +6,7 @@ import (
 
 type From struct {
 	Id           int    `json:"id"`
-	IsBot        string `json:"is_bot"`
+	IsBot        bool   `json:"is_bot"`
 	FirstName    string `json:"first_name"`
 	Username     string `json:"username"`
 	LanguageCode string `json:"language_code"`

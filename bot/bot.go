@@ -16,10 +16,11 @@ func Respond(c *gin.Context) {
 	}
 	id := chat.Message.Chat.Id
 	log.Printf("ID: %d", id)
+	log.Printf("R: %+v", chat)
 	if chat.Message.Text == "/menu" {
 		ReplyMenu(id)
 	} else {
-		SendText(id, `type "/menu"`)
+		SendText(id, "type /menu")
 	}
 }
 
