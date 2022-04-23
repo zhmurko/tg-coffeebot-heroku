@@ -55,3 +55,27 @@ func ReplyMenu(id int) []byte {
 	}
 	return body
 }
+
+func ReplyOrder(id int, coffee string, who string) []byte {
+	var Order = Button{
+		Text:         "Ready",
+		CallbackData: "ready:" + coffee + ":" + who,
+	}
+	var OrderMenu = Menu{
+		ChatId: id,
+		Text:   "Prepare please " + coffee + " for " + who + ":",
+		ReplyMarkup: Markup{
+			InlineKeyboard: [][]Button{
+				{
+					Order,
+				},
+			},
+		},
+	}
+	menu, _ := jsonMenu(OrderMenu)
+	body, err := Reply(menu)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	return body
+}

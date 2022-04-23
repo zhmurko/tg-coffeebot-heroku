@@ -28,9 +28,9 @@ func Respond(c *gin.Context) {
 	log.Printf("R: %+v", chat)
 	switch {
 	case strings.HasPrefix(text, "order:"):
-		order := strings.Split(text, ":")
-		coffee := order[1]
-		DeleteMessage(id, chat.Message.Id)
+		var coffee string
+		_, _ = fmt.Sscanf(text, "order:%s", &coffee)
+		ReplyOrder(adminId, coffee, fmt.Sprint(id))
 		SendText(id, "Doing: "+coffee)
 	case strings.HasPrefix(text, "ready:"):
 		var coffee string
