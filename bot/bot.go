@@ -20,7 +20,7 @@ func Respond(c *gin.Context) {
 		log.Println(err)
 	}
 	dumpPost(jsonB)
-	id := chat.Message.Chat.Id
+	id := chat.Message.Chat.Id + chat.CallbackQuery.From.Id
 	log.Printf("ID: %d", id)
 	log.Printf("R: %+v", chat)
 	if chat.Message.Text == "/menu" {
