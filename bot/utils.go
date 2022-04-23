@@ -10,25 +10,44 @@ import (
 	"os"
 )
 
-func Reply(b []byte) ([]byte, error) {
+func telegramUrl(uri string) string {
 	token, ok := os.LookupEnv("BOT_TOKEN")
 	if !ok {
 		token = "empty"
 	}
 
-	telegramUrl := "https://api.telegram.org/bot" + token
+	telegramUrl := "https://api.telegram.org/bot" + token + uri
 
-	url := telegramUrl + "/sendMessage"
+	return telegramUrl
+}
+
+func Reply(b []byte) ([]byte, error) {
+	url := telegramUrl("/sendMessage")
 	req, err := http.NewRequest("POST", url, bytes.NewBuffer(b))
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
 	resp, err := client.Do(req)
 	if err != nil {
-		panic(err)
+		log.Println(err)
 	}
 	defer resp.Body.Close()
 	return ioutil.ReadAll(resp.Body)
+}
+
+func DeleteMessage(chat_id int, message_id int) {
+	args := fmt.Sprintf("chat_id=%d&message_id=%d", chat_id, message_id)
+	url := telegramUrl("/deleteMessage?" + args)
+	req, err := http.NewRequest("GET", url, nil)
+	req.Header.Set("Content-Type", "application/json")
+
+	client := &http.Client{}
+	resp, err := client.Do(req)
+	if err != nil {
+		log.Println(err)
+	}
+	defer resp.Body.Close()
+	_, _ = ioutil.ReadAll(resp.Body)
 }
 
 func SendText(id int, text string) {

@@ -2,9 +2,10 @@ package bot
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
-	"net/http"
 	"log"
+	"net/http"
 	"strings"
 )
 
@@ -27,7 +28,17 @@ func Respond(c *gin.Context) {
 	log.Printf("R: %+v", chat)
 	switch {
 	case strings.HasPrefix(text, "order:"):
-		SendText(id, "Preare: "+text)
+		order := strings.Split(text, ":")
+		coffee := order[1]
+		DeleteMessage(id, chat.Message.Id)
+		SendText(id, "Doing: "+coffee)
+	case strings.HasPrefix(text, "ready:"):
+		var coffee string
+		var who int
+		_, _ = fmt.Sscanf(text, "ready:%s:%d", &coffee, &who)
+		DeleteMessage(adminId, chat.Message.Id)
+		SendText(adminId, "Ready")
+		SendText(int(who), "Your "+coffee+" is ready")
 	case strings.HasPrefix(text, "/"):
 		switch text {
 		case "/menu":
