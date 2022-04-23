@@ -1,7 +1,7 @@
 package bot
 
 import (
-	//"encoding/json"
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -15,7 +15,11 @@ func Respond(c *gin.Context) {
 	if err != nil {
 		log.Println(err)
 	}
-	dumpPost(json.Marshal(chat))
+	jsonB, err := json.Marshal(chat)
+	if err != nil {
+		log.Println(err)
+	}
+	dumpPost(jsonB)
 	id := chat.Message.Chat.Id
 	log.Printf("ID: %d", id)
 	log.Printf("R: %+v", chat)

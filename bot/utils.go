@@ -4,8 +4,6 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/gin-gonic/gin/binding"
 	"io/ioutil"
 	"log"
 	"net/http"
