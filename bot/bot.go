@@ -10,13 +10,12 @@ import (
 var adminId = 234140659
 
 func Respond(c *gin.Context) {
-	debug := c.Copy()
-	dumpPost(debug)
 	var chat Update
 	err := c.ShouldBindJSON(&chat)
 	if err != nil {
 		log.Println(err)
 	}
+	dumpPost(json.Marshal(chat))
 	id := chat.Message.Chat.Id
 	log.Printf("ID: %d", id)
 	log.Printf("R: %+v", chat)

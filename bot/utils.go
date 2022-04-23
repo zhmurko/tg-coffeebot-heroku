@@ -44,13 +44,7 @@ func prettyprint(b []byte) ([]byte, error) {
 	return out.Bytes(), err
 }
 
-func dumpPost(c *gin.Context) {
-	jsonData := make(map[string]interface{})
-	err := c.ShouldBindBodyWith(&jsonData, binding.JSON)
-	if err != nil {
-		log.Fatalln(err)
-	}
-	jsonB, _ := json.Marshal(jsonData)
+func dumpPost(jsonB []byte) {
 	b, _ := prettyprint(jsonB)
 	log.Println("Respond " + string(b))
 }
