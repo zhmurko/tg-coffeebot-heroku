@@ -3,8 +3,8 @@ package bot
 import (
 	"encoding/json"
 	"github.com/gin-gonic/gin"
-	"log"
 	"net/http"
+	"log"
 	"strings"
 )
 
