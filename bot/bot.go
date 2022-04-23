@@ -36,7 +36,8 @@ func Respond(c *gin.Context) {
 		var coffee string
 		var who int
 		_, _ = fmt.Sscanf(text, "ready:%s:%d", &coffee, &who)
-		DeleteMessage(adminId, chat.Message.Id)
+		message_id := chat.Message.Id + chat.CallbackQuery.Message.Id
+		DeleteMessage(adminId, message_id)
 		SendText(adminId, "Ready")
 		SendText(int(who), "Your "+coffee+" is ready")
 	case strings.HasPrefix(text, "/"):
