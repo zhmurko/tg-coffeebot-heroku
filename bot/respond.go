@@ -34,10 +34,11 @@ type Update struct {
 }
 
 type CallbackQuery struct {
-	Id           string `json:"id"`
-	From         From   `json:"from"`
-	ChatInstance string `json:"chat_instance"`
-	Data         string `json:"data"`
+	Id           string  `json:"id"`
+	From         From    `json:"from"`
+	ChatInstance string  `json:"chat_instance"`
+	Data         string  `json:"data"`
+	Message      Message `json:"message"`
 }
 
 // Respond
