@@ -34,7 +34,7 @@ type Update struct {
 }
 
 type CallbackQuery struct {
-	Id           int    `json:"id"`
+	Id           string `json:"id"`
 	From         From   `json:"from"`
 	ChatInstance string `json:"chat_instance"`
 	Data         string `json:"data"`
