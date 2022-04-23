@@ -3,12 +3,11 @@ package bot
 import (
 	"bytes"
 	"encoding/json"
-	"github.com/gin-gonic/gin"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-    "fmt"
 )
 
 func Reply(b []byte) ([]byte, error) {
@@ -43,11 +42,7 @@ func prettyprint(b []byte) ([]byte, error) {
 	return out.Bytes(), err
 }
 
-func dumpPost(c *gin.Context) {
-	jsonData, err := c.GetRawData()
-	if err != nil {
-		log.Fatalln(err)
-	}
-	b, _ := prettyprint(jsonData)
+func dumpPost(jsonB []byte) {
+	b, _ := prettyprint(jsonB)
 	log.Println("Respond " + string(b))
 }

@@ -28,8 +28,16 @@ type Message struct {
 }
 
 type Update struct {
-	UpdateId int     `json:"update_id"`
-	Message  Message `json:"message"`
+	UpdateId      int           `json:"update_id"`
+	Message       Message       `json:"message"`
+	CallbackQuery CallbackQuery `json:"callback_query"`
+}
+
+type CallbackQuery struct {
+	Id           string `json:"id"`
+	From         From   `json:"from"`
+	ChatInstance string `json:"chat_instance"`
+	Data         string `json:"data"`
 }
 
 // Respond
@@ -102,4 +110,4 @@ type Update struct {
 // |    "data": "order:Espresso"
 // |  }
 // |}
-// 
+//

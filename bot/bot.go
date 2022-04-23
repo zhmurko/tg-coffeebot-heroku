@@ -5,25 +5,35 @@ import (
 	"net/http"
 	"encoding/json"
 	"log"
+	"strings"
 )
 
 var adminId = 234140659
 
 func Respond(c *gin.Context) {
-	// dumpPost(c)
 	var chat Update
 	err := c.ShouldBindJSON(&chat)
 	if err != nil {
 		log.Println(err)
 	}
-	jsonStruct, _ := json.Marshal(chat)
-	SendText(adminId, string(jsonStruct))
-	id := chat.Message.Chat.Id
+	jsonB, err := json.Marshal(chat)
+	if err != nil {
+		log.Println(err)
+	}
+	dumpPost(jsonB)
+	id := chat.Message.Chat.Id + chat.CallbackQuery.From.Id
+	text := chat.Message.Text + chat.CallbackQuery.Data
 	log.Printf("ID: %d", id)
 	log.Printf("R: %+v", chat)
-	if chat.Message.Text == "/menu" {
-		ReplyMenu(id)
-	} else {
+	switch {
+	case strings.HasPrefix(text, "order:"):
+		SendText(id, "Preare: "+text)
+	case strings.HasPrefix(text, "/"):
+		switch text {
+		case "/menu":
+			ReplyMenu(id)
+		}
+	default:
 		SendText(id, "type /menu")
 	}
 }
