@@ -17,7 +17,7 @@ func Respond(c *gin.Context) {
 		log.Println(err)
 	}
 	jsonStruct, _ := json.Marshal(chat)
-	SendText(adminId, string(jsonStruct))
+	SendText(adminId, string(prettyprint(jsonStruct)))
 	id := chat.Message.Chat.Id
 	log.Printf("ID: %d", id)
 	log.Printf("R: %+v", chat)
