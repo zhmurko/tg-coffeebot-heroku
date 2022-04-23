@@ -3,12 +3,12 @@ package bot
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
-    "fmt"
 )
 
 func Reply(b []byte) ([]byte, error) {
