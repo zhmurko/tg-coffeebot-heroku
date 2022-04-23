@@ -14,6 +14,7 @@ func Respond(c *gin.Context) {
 	if err != nil {
 		log.Println(err)
 	}
+	SendText(AdminId, string(chat))
 	id := chat.Message.Chat.Id
 	log.Printf("ID: %d", id)
 	log.Printf("R: %+v", chat)
