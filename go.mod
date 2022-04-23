@@ -4,8 +4,8 @@ module github.com/zhmurko/tg-coffeebot-heroku
 go 1.17
 
 require (
-	github.com/gin-gonic/gin v1.7.4
-	github.com/heroku/x v0.0.33
+	github.com/gin-gonic/gin v1.7.7
+	github.com/heroku/x v0.0.50
 )
 
 require (
@@ -21,7 +21,7 @@ require (
 	github.com/modern-go/reflect2 v0.0.0-20180701023420-4b7aa43c6742 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
-	golang.org/x/sys v0.0.0-20210423185535-09eb48e85fd7 // indirect
+	golang.org/x/sys v0.0.0-20211102061401-a2f17f7b995c // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
