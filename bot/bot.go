@@ -31,15 +31,15 @@ func Respond(c *gin.Context) {
 		var coffee string
 		_, _ = fmt.Sscanf(text, "order:%s", &coffee)
 		ReplyOrder(adminId, coffee, fmt.Sprint(id))
-		SendText(id, "Doing: "+coffee)
+		SendText(id, "Doing "+coffee+ "for you")
 	case strings.HasPrefix(text, "ready:"):
 		var coffee string
 		var who int
 		_, _ = fmt.Sscanf(text, "ready:%s:%d", &coffee, &who)
 		message_id := chat.Message.Id + chat.CallbackQuery.Message.Id
 		DeleteMessage(adminId, message_id)
-		SendText(adminId, "Ready")
-		SendText(int(who), "Your "+coffee+" is ready")
+		SendText(adminId, "Completed " +coffee+ " for " + fmt.Sprint(who))
+		SendText(who, "Your "+coffee+" is ready")
 	case strings.HasPrefix(text, "/"):
 		switch text {
 		case "/menu":
