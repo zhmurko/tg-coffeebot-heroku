@@ -58,7 +58,7 @@ func ReplyMenu(id int) []byte {
 
 func ReplyOrder(id int, coffee string, who string) []byte {
 	var Order = Button{
-		Text:         "Ready",
+		Text:         coffee,
 		CallbackData: "ready:" + coffee + ":" + who,
 	}
 	var OrderMenu = Menu{
