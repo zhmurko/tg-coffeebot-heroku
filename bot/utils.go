@@ -5,6 +5,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/binding"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -44,10 +45,12 @@ func prettyprint(b []byte) ([]byte, error) {
 }
 
 func dumpPost(c *gin.Context) {
-	jsonData, err := c.GetRawData()
+	jsonData := make(map[string]interface{})
+	err := c.ShouldBindBodyWith(&jsonData, binding.JSON)
 	if err != nil {
 		log.Fatalln(err)
 	}
-	b, _ := prettyprint(jsonData)
+	jsonB, _ := json.Marshal(jsonData)
+	b, _ := prettyprint(jsonB)
 	log.Println("Respond " + string(b))
 }
