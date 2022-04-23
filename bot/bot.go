@@ -3,9 +3,11 @@ package bot
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	//    "encoding/json"
+	"encoding/json"
 	"log"
 )
+
+var adminId = 234140659
 
 func Respond(c *gin.Context) {
 	// dumpPost(c)
@@ -14,7 +16,8 @@ func Respond(c *gin.Context) {
 	if err != nil {
 		log.Println(err)
 	}
-	SendText(AdminId, string(chat))
+	jsonStruct, _ := json.Marshal(chat)
+	SendText(adminId, string(jsonStruct))
 	id := chat.Message.Chat.Id
 	log.Printf("ID: %d", id)
 	log.Printf("R: %+v", chat)
