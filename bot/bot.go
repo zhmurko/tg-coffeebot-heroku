@@ -42,8 +42,9 @@ func Respond(c *gin.Context) {
 		coffee = order[1]
 		_, _ = fmt.Sscanf(order[2], "%d", &who)
 		message_id := chat.Message.Id + chat.CallbackQuery.Message.Id
+		name := cache.WhatsMyName(fmt.Sprint(who))
 		DeleteMessage(adminId, message_id)
-		SendText(adminId, "Completed "+coffee+" for "+fmt.Sprint(who))
+		SendText(adminId, "Completed "+coffee+" for "+name)
 		SendText(who, "Your "+coffee+" is ready")
 	case strings.HasPrefix(text, "/"):
 		switch text {
