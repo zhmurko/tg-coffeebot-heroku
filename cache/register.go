@@ -7,7 +7,7 @@ import (
 
 var Cache *mc.Client
 
-func Register() {
+func Register() *mc.Client {
 	servers := os.Getenv("MEMCACHIER_SERVERS")
 	if servers == "" {
 		servers = "localhost:11211"
@@ -15,6 +15,5 @@ func Register() {
 	username := os.Getenv("MEMCACHIER_USERNAME")
 	password := os.Getenv("MEMCACHIER_PASSWORD")
 
-	Cache := mc.NewMC(servers, username, password)
-	defer Cache.Quit()
+	return mc.NewMC(servers, username, password)	
 }
