@@ -29,7 +29,7 @@ func Respond(c *gin.Context) {
 	log.Printf("R: %+v", chat)
 	switch {
 	case strings.HasPrefix(text, "order:"):
-		who := chat.Message.From.FirstName
+		who := chat.CallbackQuery.From.FirstName
 		var coffee string
 		_, _ = fmt.Sscanf(text, "order:%s", &coffee)
 		cache.RememberMe(fmt.Sprint(id), who)
