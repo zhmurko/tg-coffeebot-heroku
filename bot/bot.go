@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/zhmurko/tg-coffeebot-heroku/cache"
 	"log"
 	"net/http"
 	"strings"
@@ -28,10 +29,12 @@ func Respond(c *gin.Context) {
 	log.Printf("R: %+v", chat)
 	switch {
 	case strings.HasPrefix(text, "order:"):
+		who := chat.Message.From.FirstName
 		var coffee string
 		_, _ = fmt.Sscanf(text, "order:%s", &coffee)
+		cache.RememberMe(id, who)
 		ReplyOrder(adminId, coffee, fmt.Sprint(id))
-		SendText(id, "Doing "+coffee+" for you")
+		SendText(id, "Doing "+coffee+" for you, "+who)
 	case strings.HasPrefix(text, "ready:"):
 		var coffee string
 		var who int
