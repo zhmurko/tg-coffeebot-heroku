@@ -32,7 +32,7 @@ func Respond(c *gin.Context) {
 		who := chat.Message.From.FirstName
 		var coffee string
 		_, _ = fmt.Sscanf(text, "order:%s", &coffee)
-		cache.RememberMe(id, who)
+		cache.RememberMe(fmt.Sprint(id), who)
 		ReplyOrder(adminId, coffee, fmt.Sprint(id))
 		SendText(id, "Doing "+coffee+" for you, "+who)
 	case strings.HasPrefix(text, "ready:"):
