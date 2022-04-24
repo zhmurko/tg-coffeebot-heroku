@@ -3,6 +3,7 @@ package bot
 import (
 	"encoding/json"
 	//    "testing"
+	"github.com/zhmurko/tg-coffeebot-heroku/cache"
 	"log"
 )
 
@@ -61,9 +62,10 @@ func ReplyOrder(id int, coffee string, who string) []byte {
 		Text:         coffee,
 		CallbackData: "ready:" + coffee + ":" + who,
 	}
+	name := cache.WhatsMyName(who)
 	var OrderMenu = Menu{
 		ChatId: id,
-		Text:   "Prepare please " + coffee + " for " + who + ":",
+		Text:   "Prepare please " + coffee + " for " + name + ":",
 		ReplyMarkup: Markup{
 			InlineKeyboard: [][]Button{
 				{
