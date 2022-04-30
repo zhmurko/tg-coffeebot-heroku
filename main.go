@@ -27,7 +27,8 @@ func main() {
 	doOnce.Do(func() {
 		bot.RegisterWebhook()
 		cache.Cache = cache.Register()
+		db.DB = db.Connect()
 	})
 	router.Run(":" + port)
-    defer cache.Cache.Quit()
+	defer cache.Cache.Quit()
 }
