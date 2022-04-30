@@ -5,6 +5,7 @@ import (
 	_ "github.com/heroku/x/hmetrics/onload"
 	"github.com/zhmurko/tg-coffeebot-heroku/bot"
 	"github.com/zhmurko/tg-coffeebot-heroku/cache"
+	"github.com/zhmurko/tg-coffeebot-heroku/db"
 	"os"
 	"sync"
 )
@@ -27,7 +28,8 @@ func main() {
 	doOnce.Do(func() {
 		bot.RegisterWebhook()
 		cache.Cache = cache.Register()
+		db.DB = db.Connect()
 	})
 	router.Run(":" + port)
-    defer cache.Cache.Quit()
+	defer cache.Cache.Quit()
 }
