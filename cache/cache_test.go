@@ -39,6 +39,11 @@ func (suite *CacheSuite) TestMemory() {
 	require.Equal(suite.T(), name, "username")
 }
 
+func (suite *CacheSuite) TestUnknownID() {
+	name := cacheHandler.WhatsMyName("newid")
+	require.Equal(suite.T(), "newid", name)
+}
+
 // 'go test' starts here
 func TestCache(t *testing.T) {
 	if testing.Short() {

@@ -16,7 +16,7 @@ func WhatsMyName(id string) string {
 	if err != nil {
 		log.Println(err)
 	}
-	if v == "" {
+	if v == "Not found" {
 		return id
 	} else {
 		return v

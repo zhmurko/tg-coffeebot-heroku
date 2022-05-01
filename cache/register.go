@@ -15,5 +15,5 @@ func Register() *mc.Client {
 	username := os.Getenv("MEMCACHIER_USERNAME")
 	password := os.Getenv("MEMCACHIER_PASSWORD")
 
-	return mc.NewMC(servers, username, password)	
+	return mc.NewMC(servers, username, password)
 }
