@@ -1,6 +1,7 @@
 package cache
 
 import (
+	"github.com/memcachier/mc/v3"
 	"log"
 )
 
@@ -14,11 +15,11 @@ func RememberMe(id string, name string) {
 func WhatsMyName(id string) string {
 	v, _, _, err := Cache.Get(id)
 	if err != nil {
-		log.Println(err)
+		if err == mc.ErrNotFound {
+			return id
+		} else {
+			log.Println(err)
+		}
 	}
-	if v == "Not found" {
-		return id
-	} else {
-		return v
-	}
+	return v
 }
