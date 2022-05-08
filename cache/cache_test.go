@@ -21,6 +21,8 @@ func (suite *CacheSuite) SetupSuite() {
 }
 
 func (suite *CacheSuite) TearDownSuite() {
+    cacheHandler.Cache.Del("test1")
+    cacheHandler.Cache.Del("test2")
 	cacheHandler.Cache.Quit()
 }
 
@@ -34,14 +36,14 @@ func (suite *CacheSuite) TestRegister() {
 }
 
 func (suite *CacheSuite) TestMemory() {
-	cacheHandler.RememberMe("1", "username")
-	name := cacheHandler.WhatsMyName("1")
+	cacheHandler.RememberMe("test1", "username")
+	name := cacheHandler.WhatsMyName("test1")
 	require.Equal(suite.T(), name, "username")
 }
 
 func (suite *CacheSuite) TestUnknownID() {
-	name := cacheHandler.WhatsMyName("newid")
-	require.Equal(suite.T(), "newid", name)
+	name := cacheHandler.WhatsMyName("test2")
+	require.Equal(suite.T(), "test2", name)
 }
 
 // 'go test' starts here
