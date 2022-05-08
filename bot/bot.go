@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/zhmurko/tg-coffeebot-heroku/cache"
+	_ "github.com/zhmurko/tg-coffeebot-heroku/db"
 	"log"
 	"net/http"
 	"strings"
