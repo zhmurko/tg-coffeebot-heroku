@@ -51,6 +51,8 @@ func Respond(c *gin.Context) {
 		switch text {
 		case "/menu":
 			ReplyMenu(id)
+		default:
+			SendText(id, "start order: /menu")
 		}
 	default:
 		SendText(id, "type /menu")
