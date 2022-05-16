@@ -7,7 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/heroku/x v0.0.50
-	github.com/lib/pq v1.10.5
+	github.com/lib/pq v1.10.6
 	github.com/memcachier/mc/v3 v3.0.3
 	github.com/stretchr/testify v1.7.0
 )
@@ -34,5 +34,4 @@ require (
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
-	rsc.io/pdf v0.1.1 // indirect
 )
