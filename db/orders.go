@@ -5,12 +5,12 @@ import (
 	"log"
 )
 
-type OrdersORM interface {
-	Add()
-	Get()
-	List(userId int)
-}
-
+// type OrdersORM interface {
+// 	Add()
+// 	Get()
+// 	List(userId int)
+// }
+//
 type Orders struct {
 	db *sql.DB
 }
@@ -27,7 +27,7 @@ func (x Orders) Add(who int, what string) {
             from coffee as c
             where c.name = $2;
     `
-	_, err := x.db.Exec(q, who, what)
+	_, err := DB.Exec(q, who, what)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -41,7 +41,7 @@ func (x Orders) List(userId int) []Order {
           on o.coffee_id = c.id
 		  where o.user_id = $1;
     `
-	rows, err := x.db.Query(q, userId)
+	rows, err := DB.Query(q, userId)
 	if err != nil {
 		log.Fatal(err)
 	}
