@@ -1,26 +1,16 @@
 package db
 
 import (
-	"database/sql"
+	// "database/sql"
 	"log"
 )
-
-// type OrdersORM interface {
-// 	Add()
-// 	Get()
-// 	List(userId int)
-// }
-//
-type Orders struct {
-	db *sql.DB
-}
 
 type Order struct {
 	User_id int
 	Coffee  string
 }
 
-func (x Orders) Add(who int, what string) {
+func Add(who int, what string) {
 	q := `
         insert into orders (user_id, coffee_id)
             select $1, c.id
@@ -33,7 +23,7 @@ func (x Orders) Add(who int, what string) {
 	}
 }
 
-func (x Orders) List(userId int) []Order {
+func List(userId int) []Order {
 	q := `
         select o.id, o.user_id, c.name 
         from orders as o

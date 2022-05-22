@@ -8,8 +8,7 @@ import (
 )
 
 func getOrders(id int) []db.Order {
-	var x db.Orders
-	res := x.List(id)
+	res := db.List(id)
 	return res
 }
 

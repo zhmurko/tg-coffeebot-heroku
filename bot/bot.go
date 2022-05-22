@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/zhmurko/tg-coffeebot-heroku/cache"
-	_ "github.com/zhmurko/tg-coffeebot-heroku/db"
+	"github.com/zhmurko/tg-coffeebot-heroku/db"
 	"log"
 	"net/http"
 	"strings"
@@ -45,6 +45,7 @@ func Respond(c *gin.Context) {
 		message_id := chat.Message.Id + chat.CallbackQuery.Message.Id
 		name := cache.WhatsMyName(fmt.Sprint(who))
 		DeleteMessage(adminId, message_id)
+		db.Add(who, coffee)
 		SendText(adminId, "Completed "+coffee+" for "+name)
 		SendText(who, "Your "+coffee+" is ready")
 	case strings.HasPrefix(text, "/"):
