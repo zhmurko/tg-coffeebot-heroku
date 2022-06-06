@@ -8,3 +8,9 @@ INSERT INTO public.coffee (name)
 
 INSERT INTO public.coffee (name)
     VALUES ('Latte');
+    
+INSERT INTO public.coffee (name)
+    VALUES ('Ice Coffee');
+
+INSERT INTO public.coffee (name)
+    VALUES ('Mocaccino');    
