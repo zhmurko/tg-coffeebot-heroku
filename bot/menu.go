@@ -32,6 +32,16 @@ var Latte = Button{
 	CallbackData: "order:Latte",
 }
 
+var IceCoffee = Button{
+	Text:         "Ice Coffee",
+	CallbackData: "order:Ice Coffee",
+}
+
+var Mocaccino = Button{
+	Text:         "Mocaccino",
+	CallbackData: "order:Mocaccino",
+}
+
 func jsonMenu(menu Menu) ([]byte, error) {
 	return json.Marshal(menu)
 }
@@ -45,6 +55,8 @@ func ReplyMenu(id int) []byte {
 				{
 					Espresso,
 					Latte,
+					IceCoffee,
+					Mocaccino,
 				},
 			},
 		},
