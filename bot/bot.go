@@ -32,6 +32,8 @@ func Respond(c *gin.Context) {
 	case strings.HasPrefix(text, "order:"):
 		who := chat.CallbackQuery.From.FirstName
 		var coffee string
+		// workaround for coffee's name of two words, e.g. Ice Latte
+		text = strings.ReplaceAll(text, " ", "") 
 		_, _ = fmt.Sscanf(text, "order:%s", &coffee)
 		cache.RememberMe(fmt.Sprint(id), who)
 		ReplyOrder(adminId, coffee, fmt.Sprint(id))
