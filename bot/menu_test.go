@@ -19,6 +19,10 @@ var OriginJson = `{
                 {
                     "text": "Latte",
                     "callback_data": "order:Latte"
+                },
+                {
+                    "text": "Ice Coffee",
+                    "callback_data": "order:Ice Coffee"
                 }
             ]
         ]
@@ -31,7 +35,8 @@ var OriginMenu = Menu{
 	ReplyMarkup: Markup{
 		InlineKeyboard: [][]Button{{
 			Espresso,
-			Latte},
+			Latte, 
+			IceCoffee},
 		},
 	},
 }

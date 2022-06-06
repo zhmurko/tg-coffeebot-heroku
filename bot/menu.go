@@ -34,7 +34,7 @@ var Latte = Button{
 
 var IceCoffee = Button{
 	Text:         "Ice Coffee",
-	CallbackData: "order:IceCoffee",
+	CallbackData: "order:Ice Coffee",
 }
 
 var Mocaccino = Button{
