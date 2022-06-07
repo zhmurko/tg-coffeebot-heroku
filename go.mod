@@ -9,7 +9,7 @@ require (
 	github.com/heroku/x v0.0.50
 	github.com/lib/pq v1.10.5
 	github.com/memcachier/mc/v3 v3.0.3
-	github.com/stretchr/testify v1.7.0
+	github.com/stretchr/testify v1.7.2
 )
 
 require (
@@ -33,6 +33,5 @@ require (
 	golang.org/x/sys v0.0.0-20220317061510-51cd9980dadf // indirect
 	google.golang.org/protobuf v1.27.1 // indirect
 	gopkg.in/yaml.v2 v2.4.0 // indirect
-	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
-	rsc.io/pdf v0.1.1 // indirect
+	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
