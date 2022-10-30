@@ -21,11 +21,11 @@ func (suite *StatsSuite) SetupSuite() {
 	suite.coffee[1] = "Latte"
 	suite.coffee[2] = "Espresso"
 	suite.orders = []db.Order{
-		db.Order{1, "Latte"},
-		db.Order{1, "Espresso"},
-		db.Order{2, "Latte"},
-		db.Order{2, "Latte"},
-		db.Order{2, "Espresso"},
+		db.Order{User_id: 1, Coffee: "Latte"},
+		db.Order{User_id: 1, Coffee: "Espresso"},
+		db.Order{User_id: 2, Coffee: "Latte"},
+		db.Order{User_id: 2, Coffee: "Latte"},
+		db.Order{User_id: 2, Coffee: "Espresso"},
 	}
 }
 

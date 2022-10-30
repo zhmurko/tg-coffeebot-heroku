@@ -31,7 +31,7 @@ func (suite *CacheSuite) TestRegister() {
 
 	version, err := cacheHandler.Cache.Version()
 	require.NoError(suite.T(), err)
-	server := map[string]string{"localhost:11211": "1.6.15"}
+	server := map[string]string{"localhost:11211": "1.6.17"}
 	require.Equal(suite.T(), version, server)
 }
 

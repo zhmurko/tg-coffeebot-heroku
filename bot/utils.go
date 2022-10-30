@@ -23,7 +23,7 @@ func telegramUrl(uri string) string {
 
 func Reply(b []byte) ([]byte, error) {
 	url := telegramUrl("/sendMessage")
-	req, err := http.NewRequest("POST", url, bytes.NewBuffer(b))
+	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(b))
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}
@@ -38,7 +38,7 @@ func Reply(b []byte) ([]byte, error) {
 func DeleteMessage(chat_id int, message_id int) {
 	args := fmt.Sprintf("chat_id=%d&message_id=%d", chat_id, message_id)
 	url := telegramUrl("/deleteMessage?" + args)
-	req, err := http.NewRequest("GET", url, nil)
+	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Set("Content-Type", "application/json")
 
 	client := &http.Client{}

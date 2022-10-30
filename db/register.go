@@ -19,7 +19,7 @@ func Connect() *sql.DB {
 		url = "postgres://postgres@localhost:5432/coffee?sslmode=disable"
 	}
 
-	db, err := sql.Open("postgres", url)
+	db, _ := sql.Open("postgres", url)
 	driver, err := postgres.WithInstance(db, &postgres.Config{})
 	Up(driver)
 	if err != nil {
