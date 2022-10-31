@@ -25,7 +25,7 @@ func Add(who int, what string) {
 }
 
 // List orders by User
-func List(userId int) []Order {
+func List(userID int) []Order {
 	q := `
         select o.id, o.user_id, c.name 
         from orders as o
@@ -33,7 +33,7 @@ func List(userId int) []Order {
           on o.coffee_id = c.id
 		  where o.user_id = $1;
     `
-	rows, err := DB.Query(q, userId)
+	rows, err := DB.Query(q, userID)
 	if err != nil {
 		log.Fatal(err)
 	}

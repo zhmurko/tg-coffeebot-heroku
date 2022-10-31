@@ -6,7 +6,7 @@ import (
 
 // From converts a Telegram JSON response into go structure
 type From struct {
-	Id           int    `json:"id"`
+	ID           int    `json:"id"`
 	IsBot        bool   `json:"is_bot"`
 	FirstName    string `json:"first_name"`
 	Username     string `json:"username"`
@@ -15,7 +15,7 @@ type From struct {
 
 // Chat converts a Telegram JSON response into go structure
 type Chat struct {
-	Id        int    `json:"id"`
+	ID        int    `json:"id"`
 	FirstName string `json:"first_name"`
 	Username  string `json:"username"`
 	Type      string `json:"type"`
@@ -23,7 +23,7 @@ type Chat struct {
 
 // Message converts a Telegram JSON response into go structure
 type Message struct {
-	Id   int    `json:"message_id"`
+	ID   int    `json:"message_id"`
 	From From   `json:"from"`
 	Chat Chat   `json:"chat"`
 	Date int    `json:"date"`
@@ -32,14 +32,14 @@ type Message struct {
 
 // Update converts a Telegram JSON response into go structure
 type Update struct {
-	UpdateId      int           `json:"update_id"`
+	UpdateID      int           `json:"update_id"`
 	Message       Message       `json:"message"`
 	CallbackQuery CallbackQuery `json:"callback_query"`
 }
 
 // CallbackQuery converts a Telegram JSON response into go structure
 type CallbackQuery struct {
-	Id           string  `json:"id"`
+	ID           string  `json:"id"`
 	From         From    `json:"from"`
 	ChatInstance string  `json:"chat_instance"`
 	Data         string  `json:"data"`

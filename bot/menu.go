@@ -20,7 +20,7 @@ type Markup struct {
 
 // Menu of full telegram message with buttons
 type Menu struct {
-	ChatId      int    `json:"chat_id"`
+	ChatID      int    `json:"chat_id"`
 	Text        string `json:"text"`
 	ReplyMarkup Markup `json:"reply_markup"`
 }
@@ -54,7 +54,7 @@ func jsonMenu(menu Menu) ([]byte, error) {
 // ReplyMenu prepares an Menu message with button
 func ReplyMenu(id int) []byte {
 	var CoffeeMenu = Menu{
-		ChatId: id,
+		ChatID: id,
 		Text:   "Select:",
 		ReplyMarkup: Markup{
 			InlineKeyboard: [][]Button{
@@ -83,7 +83,7 @@ func ReplyOrder(id int, coffee string, who string) []byte {
 	}
 	name := cache.WhatsMyName(who)
 	var OrderMenu = Menu{
-		ChatId: id,
+		ChatID: id,
 		Text:   "Prepare please " + coffee + " for " + name + ":",
 		ReplyMarkup: Markup{
 			InlineKeyboard: [][]Button{

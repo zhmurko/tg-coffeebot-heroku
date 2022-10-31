@@ -30,7 +30,7 @@ var OriginJson = `{
 }`
 
 var OriginMenu = Menu{
-	ChatId: 1,
+	ChatID: 1,
 	Text:   "Select",
 	ReplyMarkup: Markup{
 		InlineKeyboard: [][]Button{{
@@ -50,7 +50,7 @@ func TestMenu(t *testing.T) {
 }
 
 func TestJsonMenu(t *testing.T) {
-	menu := Menu{ChatId: 1, ReplyMarkup: Markup{InlineKeyboard: [][]Button{}}}
+	menu := Menu{ChatID: 1, ReplyMarkup: Markup{InlineKeyboard: [][]Button{}}}
 	want := `{"chat_id":1,"text":"","reply_markup":{"inline_keyboard":[]}}`
 	got, _ := jsonMenu(menu)
 	if want != string(got) {

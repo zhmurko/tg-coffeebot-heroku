@@ -27,7 +27,7 @@ func Respond(c *gin.Context) {
 		log.Println(err)
 	}
 	dumpPost(jsonB)
-	id := chat.Message.Chat.Id + chat.CallbackQuery.From.Id
+	id := chat.Message.Chat.ID + chat.CallbackQuery.From.ID
 	text := chat.Message.Text + chat.CallbackQuery.Data
 	log.Printf("ID: %d", id)
 	log.Printf("R: %+v", chat)
@@ -46,7 +46,7 @@ func Respond(c *gin.Context) {
 		order := strings.Split(text, ":")
 		coffee = order[1]
 		_, _ = fmt.Sscanf(order[2], "%d", &who)
-		message_id := chat.Message.Id + chat.CallbackQuery.Message.Id
+		message_id := chat.Message.ID + chat.CallbackQuery.Message.ID
 		name := cache.WhatsMyName(fmt.Sprint(who))
 		DeleteMessage(adminID, message_id)
 		db.Add(who, coffee)
