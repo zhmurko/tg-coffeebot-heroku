@@ -19,9 +19,8 @@ func WhatsMyName(id string) string {
 	if err != nil {
 		if err == mc.ErrNotFound {
 			return id
-		} else {
-			log.Println(err)
 		}
+		log.Println(err)
 	}
 	return v
 }
