@@ -22,12 +22,12 @@ func RegisterWebhook() {
 		appName = "tg-coffeebot-heroku"
 	}
 
-	telegramUrl := "https://api.telegram.org/bot" + token
-	herokuUrl := "https://" + appName + ".herokuapp.com/webhook"
+	telegramURL := "https://api.telegram.org/bot" + token
+	herokuURL := "https://" + appName + ".herokuapp.com/webhook"
 
 	allowedUpdates, _ := json.Marshal([]string{"message", "edited_channel_post", "callback_query", "chat_member"})
 
-	urlRequest := telegramUrl + "/setWebhook?url=" + url.PathEscape(herokuUrl) + "&allowed_updates=" + url.PathEscape(string(allowedUpdates))
+	urlRequest := telegramURL + "/setWebhook?url=" + url.PathEscape(herokuURL) + "&allowed_updates=" + url.PathEscape(string(allowedUpdates))
 	if token == "empty" {
 		log.Printf("Skip Register an Empty Webhook:\n%s", urlRequest)
 	} else {
