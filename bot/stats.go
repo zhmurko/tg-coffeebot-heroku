@@ -2,7 +2,7 @@ package bot
 
 import (
 	"fmt"
-	_ "github.com/zhmurko/tg-coffeebot-heroku/cache"
+	// _ "github.com/zhmurko/tg-coffeebot-heroku/cache"
 	db "github.com/zhmurko/tg-coffeebot-heroku/db"
 	"strings"
 )
