@@ -15,7 +15,7 @@ func getOrders(id int) []db.Order {
 func stats(arr []db.Order) string {
 	sum := make(map[string]int)
 	for _, x := range arr {
-		sum[x.Coffee] += 1
+		sum[x.Coffee]++
 	}
 	var str []string
 	for name, total := range sum {
