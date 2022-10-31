@@ -34,9 +34,9 @@ var OriginMenu = Menu{
 	Text:   "Select",
 	ReplyMarkup: Markup{
 		InlineKeyboard: [][]Button{{
-			Espresso,
-			Latte, 
-			IceCoffee},
+			bEspresso,
+			bLatte, 
+			bIceCoffee},
 		},
 	},
 }

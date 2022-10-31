@@ -11,8 +11,10 @@ import (
 	"os"
 )
 
+// connection instance
 var DB *sql.DB
 
+// inititate a connection to PostgreSQL service
 func Connect() *sql.DB {
 	url := os.Getenv("DATABASE_URL")
 	if url == "" {

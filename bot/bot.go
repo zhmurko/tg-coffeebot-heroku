@@ -13,6 +13,9 @@ import (
 
 var adminID = 234140659
 
+
+// Respond parses an incoming json 
+// and sends an output message
 func Respond(c *gin.Context) {
 	var chat Update
 	err := c.ShouldBindJSON(&chat)
@@ -63,6 +66,7 @@ func Respond(c *gin.Context) {
 	}
 }
 
+// Pong is used for healthchecks
 func Pong(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "pong",

@@ -7,37 +7,42 @@ import (
 	"log"
 )
 
+// Button in telegram chat
 type Button struct {
 	Text         string `json:"text"`
 	CallbackData string `json:"callback_data"`
 }
 
+// Block of buttons in telegram chat
 type Markup struct {
 	InlineKeyboard [][]Button `json:"inline_keyboard"`
 }
 
+// Full telegram message with buttons
 type Menu struct {
 	ChatId      int    `json:"chat_id"`
 	Text        string `json:"text"`
 	ReplyMarkup Markup `json:"reply_markup"`
 }
 
-var Espresso = Button{
+// Espresso button for menu
+var bEspresso = Button{
 	Text:         "Espresso",
 	CallbackData: "order:Espresso",
 }
 
-var Latte = Button{
+// Latte button for menu
+var bLatte = Button{
 	Text:         "Latte",
 	CallbackData: "order:Latte",
 }
 
-var IceCoffee = Button{
+var bIceCoffee = Button{
 	Text:         "Ice Coffee",
 	CallbackData: "order:Ice Coffee",
 }
 
-var Mocaccino = Button{
+var bMocaccino = Button{
 	Text:         "Mocaccino",
 	CallbackData: "order:Mocaccino",
 }
@@ -46,6 +51,7 @@ func jsonMenu(menu Menu) ([]byte, error) {
 	return json.Marshal(menu)
 }
 
+// ReplyMenu prepares an Menu message with button
 func ReplyMenu(id int) []byte {
 	var CoffeeMenu = Menu{
 		ChatId: id,
@@ -53,10 +59,10 @@ func ReplyMenu(id int) []byte {
 		ReplyMarkup: Markup{
 			InlineKeyboard: [][]Button{
 				{
-					Espresso,
-					Latte,
-					IceCoffee,
-					Mocaccino,
+					bEspresso,
+					bLatte,
+					bIceCoffee,
+					bMocaccino,
 				},
 			},
 		},
@@ -69,6 +75,7 @@ func ReplyMenu(id int) []byte {
 	return body
 }
 
+// ReplyOrder prepares a telegram message with order details
 func ReplyOrder(id int, coffee string, who string) []byte {
 	var Order = Button{
 		Text:         coffee,

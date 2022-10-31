@@ -9,6 +9,7 @@ import (
 	"os"
 )
 
+// register a callback of our service via Telegram API 
 func RegisterWebhook() {
 
 	token, ok := os.LookupEnv("BOT_TOKEN")

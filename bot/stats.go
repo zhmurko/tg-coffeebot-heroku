@@ -24,6 +24,7 @@ func stats(arr []db.Order) string {
 	return strings.Join(str[:], "\n")
 }
 
+// ReplyStats prepares a telegram message with history of orders
 func ReplyStats(id int) {
 	orders := getOrders(id)
 	message := stats(orders)
