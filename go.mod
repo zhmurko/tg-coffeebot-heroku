@@ -7,7 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/golang-migrate/migrate/v4 v4.15.2
 	github.com/heroku/x v0.0.55
-	github.com/lib/pq v1.10.5
+	github.com/lib/pq v1.10.7
 	github.com/memcachier/mc/v3 v3.0.3
 	github.com/stretchr/testify v1.8.1
 )
