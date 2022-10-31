@@ -11,7 +11,7 @@ import (
 	"strings"
 )
 
-var adminId = 234140659
+var adminID = 234140659
 
 func Respond(c *gin.Context) {
 	var chat Update
@@ -35,7 +35,7 @@ func Respond(c *gin.Context) {
 		order := strings.Split(text, ":")
 		coffee = order[1]
 		cache.RememberMe(fmt.Sprint(id), who)
-		ReplyOrder(adminId, coffee, fmt.Sprint(id))
+		ReplyOrder(adminID, coffee, fmt.Sprint(id))
 		SendText(id, "Doing "+coffee+" for you, "+who)
 	case strings.HasPrefix(text, "ready:"):
 		var coffee string
@@ -45,9 +45,9 @@ func Respond(c *gin.Context) {
 		_, _ = fmt.Sscanf(order[2], "%d", &who)
 		message_id := chat.Message.Id + chat.CallbackQuery.Message.Id
 		name := cache.WhatsMyName(fmt.Sprint(who))
-		DeleteMessage(adminId, message_id)
+		DeleteMessage(adminID, message_id)
 		db.Add(who, coffee)
-		SendText(adminId, "Completed "+coffee+" for "+name)
+		SendText(adminID, "Completed "+coffee+" for "+name)
 		SendText(who, "Your "+coffee+" is ready")
 	case strings.HasPrefix(text, "/"):
 		switch text {
