@@ -6,7 +6,7 @@ import (
 )
 // Order keep Orders in db
 type Order struct {
-	User_id int
+	UserID int
 	Coffee  string
 }
 
@@ -44,7 +44,7 @@ func List(userID int) []Order {
 			id int
 			o  Order
 		)
-		if err := rows.Scan(&id, &o.User_id, &o.Coffee); err != nil {
+		if err := rows.Scan(&id, &o.UserID, &o.Coffee); err != nil {
 			log.Fatal(err)
 		}
 		s = append(s, o)

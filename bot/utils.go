@@ -37,8 +37,8 @@ func Reply(b []byte) ([]byte, error) {
 }
 
 // DeleteMessage clean up a telegram chat history from pressed buttons
-func DeleteMessage(chat_id int, message_id int) {
-	args := fmt.Sprintf("chat_id=%d&message_id=%d", chat_id, message_id)
+func DeleteMessage(chatID int, messageID int) {
+	args := fmt.Sprintf("chat_id=%d&message_id=%d", chatID, messageID)
 	url := telegramUrl("/deleteMessage?" + args)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Set("Content-Type", "application/json")

@@ -46,9 +46,9 @@ func Respond(c *gin.Context) {
 		order := strings.Split(text, ":")
 		coffee = order[1]
 		_, _ = fmt.Sscanf(order[2], "%d", &who)
-		message_id := chat.Message.ID + chat.CallbackQuery.Message.ID
+		messageID := chat.Message.ID + chat.CallbackQuery.Message.ID
 		name := cache.WhatsMyName(fmt.Sprint(who))
-		DeleteMessage(adminID, message_id)
+		DeleteMessage(adminID, messageID)
 		db.Add(who, coffee)
 		SendText(adminID, "Completed "+coffee+" for "+name)
 		SendText(who, "Your "+coffee+" is ready")

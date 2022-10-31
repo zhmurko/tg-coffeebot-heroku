@@ -21,11 +21,11 @@ func (suite *StatsSuite) SetupSuite() {
 	suite.coffee[1] = "Latte"
 	suite.coffee[2] = "Espresso"
 	suite.orders = []db.Order{
-		db.Order{User_id: 1, Coffee: "Latte"},
-		db.Order{User_id: 1, Coffee: "Espresso"},
-		db.Order{User_id: 2, Coffee: "Latte"},
-		db.Order{User_id: 2, Coffee: "Latte"},
-		db.Order{User_id: 2, Coffee: "Espresso"},
+		db.Order{UserID: 1, Coffee: "Latte"},
+		db.Order{UserID: 1, Coffee: "Espresso"},
+		db.Order{UserID: 2, Coffee: "Latte"},
+		db.Order{UserID: 2, Coffee: "Latte"},
+		db.Order{UserID: 2, Coffee: "Espresso"},
 	}
 }
 
@@ -33,9 +33,9 @@ func (suite *StatsSuite) TestStatsMessage() {
 	var expected [2]string
 	expected[0] = "Latte: 3"
 	expected[1] = "Espresso: 2"
-	expected_line := strings.Join(expected[:], "\n")
+	expectedLine := strings.Join(expected[:], "\n")
 	result := stats(suite.orders)
-	require.Equal(suite.T(), expected_line, result)
+	require.Equal(suite.T(), expectedLine, result)
 }
 
 func TestStatsSuite(t *testing.T) {
