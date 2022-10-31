@@ -13,12 +13,12 @@ type Button struct {
 	CallbackData string `json:"callback_data"`
 }
 
-// Block of buttons in telegram chat
+// Markup is a block of buttons in telegram chat
 type Markup struct {
 	InlineKeyboard [][]Button `json:"inline_keyboard"`
 }
 
-// Full telegram message with buttons
+// Menu of full telegram message with buttons
 type Menu struct {
 	ChatId      int    `json:"chat_id"`
 	Text        string `json:"text"`

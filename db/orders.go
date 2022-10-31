@@ -4,13 +4,13 @@ import (
 	// "database/sql"
 	"log"
 )
-// keep Orders in db
+// Order keep Orders in db
 type Order struct {
 	User_id int
 	Coffee  string
 }
 
-// store an Order in db
+// Add an Order in db
 func Add(who int, what string) {
 	q := `
         insert into orders (user_id, coffee_id)
@@ -24,7 +24,7 @@ func Add(who int, what string) {
 	}
 }
 
-// get Orders by User
+// List orders by User
 func List(userId int) []Order {
 	q := `
         select o.id, o.user_id, c.name 

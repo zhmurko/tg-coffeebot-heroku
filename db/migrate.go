@@ -11,7 +11,7 @@ import (
 	// "os"
 )
 
-// apply all DB migrations
+// Up apply all DB migrations
 func Up(driver database.Driver) {
 	m, err := migrate.NewWithDatabaseInstance(
 		"file://db/migrations",

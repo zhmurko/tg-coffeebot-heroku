@@ -21,7 +21,7 @@ func telegramUrl(uri string) string {
 	return telegramUrl
 }
 
-// main Reply call point for Telegram API via http
+// Reply call a main webhook for Telegram API for /sendMessage
 func Reply(b []byte) ([]byte, error) {
 	url := telegramUrl("/sendMessage")
 	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(b))
@@ -36,7 +36,7 @@ func Reply(b []byte) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
-// clean up a telegram chat history from pressed buttons
+// DeleteMessage clean up a telegram chat history from pressed buttons
 func DeleteMessage(chat_id int, message_id int) {
 	args := fmt.Sprintf("chat_id=%d&message_id=%d", chat_id, message_id)
 	url := telegramUrl("/deleteMessage?" + args)
@@ -52,7 +52,7 @@ func DeleteMessage(chat_id int, message_id int) {
 	_, _ = ioutil.ReadAll(resp.Body)
 }
 
-// reply with Text message
+// SendText replies with a JSON-formatted message
 func SendText(id int, text string) {
 	data := []byte(fmt.Sprintf(`{"chat_id":%d,"text":"%s"}`, id, text))
 	_, _ = Reply(data)
