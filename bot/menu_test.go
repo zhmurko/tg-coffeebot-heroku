@@ -6,7 +6,7 @@ import (
 	//    "log"
 )
 
-var OriginJson = `{
+var OriginJSON = `{
     "chat_id": 1,
     "text": "Select",
     "reply_markup": {
@@ -30,19 +30,19 @@ var OriginJson = `{
 }`
 
 var OriginMenu = Menu{
-	ChatId: 1,
+	ChatID: 1,
 	Text:   "Select",
 	ReplyMarkup: Markup{
 		InlineKeyboard: [][]Button{{
-			Espresso,
-			Latte, 
-			IceCoffee},
+			bEspresso,
+			bLatte, 
+			bIceCoffee},
 		},
 	},
 }
 
 func TestMenu(t *testing.T) {
-	want := OriginJson
+	want := OriginJSON
 	got, _ := json.MarshalIndent(OriginMenu, "", "    ")
 	if want != string(got) {
 		t.Errorf("want = %s; got %s", want, got)
@@ -50,7 +50,7 @@ func TestMenu(t *testing.T) {
 }
 
 func TestJsonMenu(t *testing.T) {
-	menu := Menu{ChatId: 1, ReplyMarkup: Markup{InlineKeyboard: [][]Button{}}}
+	menu := Menu{ChatID: 1, ReplyMarkup: Markup{InlineKeyboard: [][]Button{}}}
 	want := `{"chat_id":1,"text":"","reply_markup":{"inline_keyboard":[]}}`
 	got, _ := jsonMenu(menu)
 	if want != string(got) {

@@ -2,7 +2,7 @@ package bot
 
 import (
 	"fmt"
-	_ "github.com/zhmurko/tg-coffeebot-heroku/cache"
+	// _ "github.com/zhmurko/tg-coffeebot-heroku/cache"
 	db "github.com/zhmurko/tg-coffeebot-heroku/db"
 	"strings"
 )
@@ -15,7 +15,7 @@ func getOrders(id int) []db.Order {
 func stats(arr []db.Order) string {
 	sum := make(map[string]int)
 	for _, x := range arr {
-		sum[x.Coffee] += 1
+		sum[x.Coffee]++
 	}
 	var str []string
 	for name, total := range sum {
@@ -24,6 +24,7 @@ func stats(arr []db.Order) string {
 	return strings.Join(str[:], "\n")
 }
 
+// ReplyStats prepares a telegram message with history of orders
 func ReplyStats(id int) {
 	orders := getOrders(id)
 	message := stats(orders)

@@ -10,19 +10,20 @@ import (
 	"os"
 )
 
-func telegramUrl(uri string) string {
+func telegramURL(uri string) string {
 	token, ok := os.LookupEnv("BOT_TOKEN")
 	if !ok {
 		token = "empty"
 	}
 
-	telegramUrl := "https://api.telegram.org/bot" + token + uri
+	telegramURL := "https://api.telegram.org/bot" + token + uri
 
-	return telegramUrl
+	return telegramURL
 }
 
+// Reply call a main webhook for Telegram API for /sendMessage
 func Reply(b []byte) ([]byte, error) {
-	url := telegramUrl("/sendMessage")
+	url := telegramURL("/sendMessage")
 	req, _ := http.NewRequest("POST", url, bytes.NewBuffer(b))
 	req.Header.Set("Content-Type", "application/json")
 
@@ -35,9 +36,10 @@ func Reply(b []byte) ([]byte, error) {
 	return ioutil.ReadAll(resp.Body)
 }
 
-func DeleteMessage(chat_id int, message_id int) {
-	args := fmt.Sprintf("chat_id=%d&message_id=%d", chat_id, message_id)
-	url := telegramUrl("/deleteMessage?" + args)
+// DeleteMessage clean up a telegram chat history from pressed buttons
+func DeleteMessage(chatID int, messageID int) {
+	args := fmt.Sprintf("chat_id=%d&message_id=%d", chatID, messageID)
+	url := telegramURL("/deleteMessage?" + args)
 	req, _ := http.NewRequest("GET", url, nil)
 	req.Header.Set("Content-Type", "application/json")
 
@@ -50,6 +52,7 @@ func DeleteMessage(chat_id int, message_id int) {
 	_, _ = ioutil.ReadAll(resp.Body)
 }
 
+// SendText replies with a JSON-formatted message
 func SendText(id int, text string) {
 	data := []byte(fmt.Sprintf(`{"chat_id":%d,"text":"%s"}`, id, text))
 	_, _ = Reply(data)

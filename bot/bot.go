@@ -11,8 +11,11 @@ import (
 	"strings"
 )
 
-var adminId = 234140659
+var adminID = 234140659
 
+
+// Respond parses an incoming json 
+// and sends an output message
 func Respond(c *gin.Context) {
 	var chat Update
 	err := c.ShouldBindJSON(&chat)
@@ -24,7 +27,7 @@ func Respond(c *gin.Context) {
 		log.Println(err)
 	}
 	dumpPost(jsonB)
-	id := chat.Message.Chat.Id + chat.CallbackQuery.From.Id
+	id := chat.Message.Chat.ID + chat.CallbackQuery.From.ID
 	text := chat.Message.Text + chat.CallbackQuery.Data
 	log.Printf("ID: %d", id)
 	log.Printf("R: %+v", chat)
@@ -35,7 +38,7 @@ func Respond(c *gin.Context) {
 		order := strings.Split(text, ":")
 		coffee = order[1]
 		cache.RememberMe(fmt.Sprint(id), who)
-		ReplyOrder(adminId, coffee, fmt.Sprint(id))
+		ReplyOrder(adminID, coffee, fmt.Sprint(id))
 		SendText(id, "Doing "+coffee+" for you, "+who)
 	case strings.HasPrefix(text, "ready:"):
 		var coffee string
@@ -43,11 +46,11 @@ func Respond(c *gin.Context) {
 		order := strings.Split(text, ":")
 		coffee = order[1]
 		_, _ = fmt.Sscanf(order[2], "%d", &who)
-		message_id := chat.Message.Id + chat.CallbackQuery.Message.Id
+		messageID := chat.Message.ID + chat.CallbackQuery.Message.ID
 		name := cache.WhatsMyName(fmt.Sprint(who))
-		DeleteMessage(adminId, message_id)
+		DeleteMessage(adminID, messageID)
 		db.Add(who, coffee)
-		SendText(adminId, "Completed "+coffee+" for "+name)
+		SendText(adminID, "Completed "+coffee+" for "+name)
 		SendText(who, "Your "+coffee+" is ready")
 	case strings.HasPrefix(text, "/"):
 		switch text {
@@ -63,6 +66,7 @@ func Respond(c *gin.Context) {
 	}
 }
 
+// Pong is used for healthchecks
 func Pong(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{
 		"message": "pong",

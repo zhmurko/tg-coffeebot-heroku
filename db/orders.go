@@ -4,12 +4,13 @@ import (
 	// "database/sql"
 	"log"
 )
-
+// Order keep Orders in db
 type Order struct {
-	User_id int
+	UserID int
 	Coffee  string
 }
 
+// Add an Order in db
 func Add(who int, what string) {
 	q := `
         insert into orders (user_id, coffee_id)
@@ -23,7 +24,8 @@ func Add(who int, what string) {
 	}
 }
 
-func List(userId int) []Order {
+// List orders by User
+func List(userID int) []Order {
 	q := `
         select o.id, o.user_id, c.name 
         from orders as o
@@ -31,7 +33,7 @@ func List(userId int) []Order {
           on o.coffee_id = c.id
 		  where o.user_id = $1;
     `
-	rows, err := DB.Query(q, userId)
+	rows, err := DB.Query(q, userID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -42,7 +44,7 @@ func List(userId int) []Order {
 			id int
 			o  Order
 		)
-		if err := rows.Scan(&id, &o.User_id, &o.Coffee); err != nil {
+		if err := rows.Scan(&id, &o.UserID, &o.Coffee); err != nil {
 			log.Fatal(err)
 		}
 		s = append(s, o)

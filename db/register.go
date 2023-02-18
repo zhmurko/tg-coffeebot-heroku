@@ -2,17 +2,19 @@ package db
 
 import (
 	"database/sql"
-	_ "github.com/lib/pq"
+	// _ "github.com/lib/pq"
 	// "github.com/golang-migrate/migrate/v4"
 	// "github.com/golang-migrate/migrate/v4/database"
 	"github.com/golang-migrate/migrate/v4/database/postgres"
-	_ "github.com/golang-migrate/migrate/v4/source/file"
+	// _ "github.com/golang-migrate/migrate/v4/source/file"
 	"log"
 	"os"
 )
 
+// DB connection instance
 var DB *sql.DB
 
+// Connect to PostgreSQL service
 func Connect() *sql.DB {
 	url := os.Getenv("DATABASE_URL")
 	if url == "" {
