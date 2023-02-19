@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"os"
@@ -33,7 +33,7 @@ func Reply(b []byte) ([]byte, error) {
 		log.Println(err)
 	}
 	defer resp.Body.Close()
-	return ioutil.ReadAll(resp.Body)
+	return io.ReadAll(resp.Body)
 }
 
 // DeleteMessage clean up a telegram chat history from pressed buttons
@@ -49,7 +49,7 @@ func DeleteMessage(chatID int, messageID int) {
 		log.Println(err)
 	}
 	defer resp.Body.Close()
-	_, _ = ioutil.ReadAll(resp.Body)
+	_, _ = io.ReadAll(resp.Body)
 }
 
 // SendText replies with a JSON-formatted message
