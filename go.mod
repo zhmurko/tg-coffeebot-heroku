@@ -6,7 +6,7 @@ go 1.19
 require (
 	github.com/gin-gonic/gin v1.8.2
 	github.com/golang-migrate/migrate/v4 v4.15.2
-	github.com/heroku/x v0.0.55
+	github.com/heroku/x v0.0.57
 	github.com/memcachier/mc/v3 v3.0.3
 	github.com/stretchr/testify v1.8.1
 )
